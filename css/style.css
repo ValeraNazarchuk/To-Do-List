@@ -1,0 +1,153 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+body {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000;
+}
+
+.container {
+  max-width: 1100px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__box {
+  display: flex;
+  align-items: center;
+}
+
+.header__text {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.header__title {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 77px;
+  color: #5e5e5e;
+}
+
+.header__clear {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #2d70fd;
+  transition: all .3s;
+}
+.header__clear:hover{
+  color: #0051fb;
+}
+
+.main__section {
+  margin: 50px auto 0;
+  max-width: 600px;
+}
+
+.form__box {
+  display: flex;
+  padding: 10px 10px 10px 20px;
+  border: 1px solid #95a5f5;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form__text {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  outline: 0;
+  border: 0;
+  width: 100%;
+  padding-right: 20px;
+}
+
+.form__text::placeholder {
+  color: #2d70fd;
+}
+
+.form__btn {
+  margin-left: auto;
+  color: #ffffff;
+  padding: 12px 24px;
+  background: #2d70fd;
+  border: 1px solid #2d70fd;
+  border-radius: 4px;
+  transition: all .4s;
+}
+.form__btn:hover{
+  background-color: #0051fb;
+}
+
+.list {
+  margin: 30px auto 0px;
+}
+
+.list__item-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.list__item{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  transition: all .4s;
+}
+
+.list__item:hover{
+  color: #0051fb;
+}
+
+.delete__btn{
+  max-height: 30px;
+}
+
+.check__btn {
+  margin: 0 15px;
+  width: 25px;
+  height: 25px;
+  background: #ffffff;
+  border: 2px solid #1e9cea;
+  border-radius: 5px;
+}
+
+.check--active{
+  background-image: url(../images/check.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #1e9cea;
+}
