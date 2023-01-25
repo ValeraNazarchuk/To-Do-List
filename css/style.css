@@ -151,3 +151,8 @@ body {
   background-repeat: no-repeat;
   background-color: #1e9cea;
 }
+
+.list__text-active{
+  color: #0051fb;
+  text-decoration: line-through;
+}
