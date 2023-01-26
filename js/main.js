@@ -3,7 +3,7 @@ const clearAll = document.querySelector('.header__clear')
 
 const form = document.querySelector('.form')
 const taskInput = document.querySelector('.form__text')
-const formBtn = document.querySelector('.form__btn')
+// const formBtn = document.querySelector('.form__btn')
 
 const taskList = document.querySelector('.list')
 const emptyList = document.querySelector('.list__item-empty')
@@ -38,10 +38,10 @@ function addTask(e) {
   }
 
   // tasks.push(newTask)
-  
+
   // filter for css class
   if (taskText) {
-    tasks.push(newTask)
+    tasks.unshift(newTask)
     renderTask(newTask)
     numberTask(tasks.length)
   }
@@ -88,7 +88,6 @@ function doneTask(e) {
 
     listText.classList.toggle('list__text-active')
   }
-
   saveToLocalStorage()
 }
 
@@ -106,12 +105,13 @@ function saveToLocalStorage() {
 
 function renderTask(task) {
   const cssClass = task.done ? 'list__text list__text-active' : 'list__text'
+  const btnClass = task.done ? 'check__btn check--active' : 'check__btn'
 
   const taskHTML = `<li id = '${task.id}' class="list__item">
           <button class="delete__btn" type="button">
             <img src="./images/delete.svg" alt="delete">
           </button>
-          <button class="check__btn" data-check="done" type="button"></button>
+          <button class="${btnClass}" data-check="done" type="button"></button>
           <p class="${cssClass}">${task.text}</p>
         </li>`
 
@@ -131,3 +131,14 @@ function clearBtn() {
     checkEmptyList()
   }
 }
+
+// for (let task of tasks) {
+//   const done = task.done
+//   const id = tasks.id
+  
+//   console.log(id);
+//   if (done) {
+//     // const btn = document.querySelector('')
+//     // btn.classList.add('check--active')
+//   }
+// }
