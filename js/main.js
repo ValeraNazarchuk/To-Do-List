@@ -7,6 +7,13 @@ const emptyList = document.querySelector('.list__item-empty')
 
 let tasks = []
 
+if (localStorage.getItem('tasks')) {
+  tasks = JSON.parse(localStorage.getItem('tasks'))
+  tasks.forEach((task) => renderTask(task))
+}
+
+checkEmptyList()
+
 form.addEventListener('submit', addTask)
 
 taskList.addEventListener('click', deleteTask)
@@ -27,23 +34,14 @@ function addTask(e) {
   tasks.push(newTask)
 
   // filter for css class
-  const cssClass = newTask.done ? 'list__text list__text-active' : 'list__text'
-
-  const taskHTML = `<li id = '${newTask.id}' class="list__item">
-          <button class="delete__btn" type="button">
-            <img src="./images/delete.svg" alt="delete">
-          </button>
-          <button class="check__btn" data-check="done" type="button"></button>
-          <p class="${cssClass}">${newTask.text}</p>
-        </li>`
-
-  taskList.insertAdjacentHTML('beforeend', taskHTML)
+  renderTask(newTask)
 
   // почистити поле ввода і додати фокус
   taskInput.value = ''
   taskInput.focus()
 
   checkEmptyList()
+  saveToLocalStorage()
 }
 
 function deleteTask(e) {
@@ -61,6 +59,7 @@ function deleteTask(e) {
   parentNode.remove()
 
   checkEmptyList()
+  saveToLocalStorage()
 }
 
 function doneTask(e) {
@@ -81,6 +80,8 @@ function doneTask(e) {
 
     listText.classList.toggle('list__text-active')
   }
+
+  saveToLocalStorage()
 }
 
 function checkEmptyList() {
@@ -89,4 +90,22 @@ function checkEmptyList() {
   } else {
     emptyList.style.display = 'flex'
   }
+}
+
+function saveToLocalStorage() {
+  localStorage.setItem('tasks', JSON.stringify(tasks))
+}
+
+function renderTask(task) {
+  const cssClass = task.done ? 'list__text list__text-active' : 'list__text'
+
+  const taskHTML = `<li id = '${task.id}' class="list__item">
+          <button class="delete__btn" type="button">
+            <img src="./images/delete.svg" alt="delete">
+          </button>
+          <button class="check__btn" data-check="done" type="button"></button>
+          <p class="${cssClass}">${task.text}</p>
+        </li>`
+
+  taskList.insertAdjacentHTML('beforeend', taskHTML)
 }
