@@ -1,4 +1,5 @@
 const headerText = document.querySelector('.header__text')
+const clearAll = document.querySelector('.header__clear')
 
 const form = document.querySelector('.form')
 const taskInput = document.querySelector('.form__text')
@@ -22,6 +23,8 @@ form.addEventListener('submit', addTask)
 taskList.addEventListener('click', deleteTask)
 
 taskList.addEventListener('click', doneTask)
+
+clearAll.addEventListener('click', clearBtn)
 
 function addTask(e) {
   e.preventDefault()
@@ -117,4 +120,14 @@ function renderTask(task) {
 
 function numberTask(args) {
   headerText.textContent = `${args} tasks`
+}
+
+function clearBtn() {
+  while (taskList.firstChild.className !== 'list__item-empty') {
+    taskList.removeChild(taskList.firstChild)
+    tasks.splice(0, 1)
+    localStorage.clear()
+    numberTask(tasks.length)
+    checkEmptyList()
+  }
 }
