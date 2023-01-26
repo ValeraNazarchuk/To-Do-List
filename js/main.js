@@ -3,7 +3,6 @@ const clearAll = document.querySelector('.header__clear')
 
 const form = document.querySelector('.form')
 const taskInput = document.querySelector('.form__text')
-// const formBtn = document.querySelector('.form__btn')
 
 const taskList = document.querySelector('.list')
 const emptyList = document.querySelector('.list__item-empty')
@@ -37,9 +36,7 @@ function addTask(e) {
     done: false,
   }
 
-  // tasks.push(newTask)
-
-  // filter for css class
+  // провірка на value
   if (taskText) {
     tasks.push(newTask)
     renderTask(newTask)
