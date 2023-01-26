@@ -41,7 +41,7 @@ function addTask(e) {
 
   // filter for css class
   if (taskText) {
-    tasks.unshift(newTask)
+    tasks.push(newTask)
     renderTask(newTask)
     numberTask(tasks.length)
   }
@@ -119,7 +119,7 @@ function renderTask(task) {
 }
 
 function numberTask(args) {
-  headerText.textContent = `${args} tasks`
+  headerText.textContent = args <= 1 ? `${args} task` : `${args} tasks`
 }
 
 function clearBtn() {
@@ -131,14 +131,3 @@ function clearBtn() {
     checkEmptyList()
   }
 }
-
-// for (let task of tasks) {
-//   const done = task.done
-//   const id = tasks.id
-  
-//   console.log(id);
-//   if (done) {
-//     // const btn = document.querySelector('')
-//     // btn.classList.add('check--active')
-//   }
-// }
